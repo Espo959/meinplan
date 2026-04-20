@@ -141,6 +141,7 @@ function App(){
   const [tool,setTool]=useState("select");
   const [editMode,setEditMode]=useState(false);
   const [showDim,setShowDim]=useState(true);
+  const [showPanel,setShowPanel]=useState(true);
   const [unit,setUnit]=useState("mm"); // "mm" | "cm" | "m"
   const [ksList,setKsList]=useState([{id:1,x:0,y:0}]);
   const [activeKS,setActiveKS]=useState(1);
@@ -367,7 +368,7 @@ function App(){
           const fs=w2s(draft.pts[0].x,draft.pts[0].y,pan,zoom);
           if(Math.hypot(sx-fs.x,sy-fs.y)<26){finishDraft(true);return;}
         }
-        setDraft(d=>({pts:[...d.pts,{id:uid(),x:wx,y:wy}]}));
+        setDraft(d=>{var prev=d.pts[d.pts.length-1];var nx=wx,ny=wy;if(prev){if(Math.abs(wx-prev.x)>=Math.abs(wy-prev.y)){ny=prev.y;}else{nx=prev.x;}}return{pts:[...d.pts,{id:uid(),x:nx,y:ny}]};});
       }
     } else if(tool==="ks"){
       pushHist();const nid=uid();
@@ -730,11 +731,11 @@ function App(){
       const yOff = sk.y - 38;
       // KS → linke Kante
       els.push(React.createElement('g', { key: "hkx", __self: this, __source: {fileName: _jsxFileName, lineNumber: 713}}
-        , React.createElement('line', { x1: sk.x, y1: yOff, x2: sc.x, y2: yOff, stroke: col, strokeWidth: 1.5, strokeDasharray: "5,3", __self: this, __source: {fileName: _jsxFileName, lineNumber: 714}})
+        , React.createElement('line', { x1: sk.x, y1: yOff, x2: se.x, y2: yOff, stroke: col, strokeWidth: 1.5, strokeDasharray: "5,3", __self: this, __source: {fileName: _jsxFileName, lineNumber: 714}})
         , React.createElement('line', { x1: sk.x, y1: yOff-5, x2: sk.x, y2: yOff+5, stroke: col, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 715}})
-        , React.createElement('line', { x1: sc.x, y1: yOff-5, x2: sc.x, y2: yOff+5, stroke: col, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 716}})
-        , React.createElement('rect', { x: (sk.x+sc.x)/2-26, y: yOff-9, width: 52, height: 16, rx: 4, fill: "#fff", stroke: col, strokeWidth: 1, __self: this, __source: {fileName: _jsxFileName, lineNumber: 717}})
-        , React.createElement('text', { x: (sk.x+sc.x)/2, y: yOff+3, textAnchor: "middle", fontSize: 10, fontWeight: "800", fill: col, __self: this, __source: {fileName: _jsxFileName, lineNumber: 718}}, fmt(Math.abs(toKS(cx,cy,ks).x)))
+        , React.createElement('line', { x1: se.x, y1: yOff-5, x2: se.x, y2: yOff+5, stroke: col, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 716}})
+        , React.createElement('rect', { x: (sk.x+se.x)/2-26, y: yOff-9, width: 52, height: 16, rx: 4, fill: "#fff", stroke: col, strokeWidth: 1, __self: this, __source: {fileName: _jsxFileName, lineNumber: 717}})
+        , React.createElement('text', { x: (sk.x+se.x)/2, y: yOff+3, textAnchor: "middle", fontSize: 10, fontWeight: "800", fill: col, __self: this, __source: {fileName: _jsxFileName, lineNumber: 718}}, fmt(Math.abs(toKS(leftEdgeX,cy,ks).x)))
       ));
       // Kante → Mitte (Radius)
       els.push(React.createElement('g', { key: "hkm", __self: this, __source: {fileName: _jsxFileName, lineNumber: 721}}
@@ -749,10 +750,10 @@ function App(){
       if(pathPts && pathPts.length >= 2){
         const ys = pathPts.map(p=>p.y);
         const drawTop = Math.min(...ys), drawBottom = Math.max(...ys);
-        const nearEdgeY = (Math.abs(cy - drawTop) < Math.abs(cy - drawBottom)) ? drawTop : drawBottom;
+        const nearEdgeY = (Math.abs(topEdgeY - drawTop) < Math.abs(topEdgeY - drawBottom)) ? drawTop : drawBottom;
         const sDrawEdge = w2s(cx, nearEdgeY, pan, zoom);
-        const sHoleEdge = w2s(cx, cy, pan, zoom);
-        const distEdge = Math.abs(cy - nearEdgeY);
+        const sHoleEdge = w2s(cx, topEdgeY, pan, zoom);
+        const distEdge = Math.abs(topEdgeY - nearEdgeY);
         if(distEdge > 0){
           const xOff2 = sc.x + r*zoom + 32;
           els.push(React.createElement('g', { key: "edge2hole", __self: this, __source: {fileName: _jsxFileName, lineNumber: 739}}
@@ -929,6 +930,7 @@ function App(){
       , React.createElement('div', { style: {background:C.hdr,color:C.hdrFg,padding:"9px 14px",display:"flex",alignItems:"center",gap:10,flexShrink:0}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 910}}
         , React.createElement('b', { style: {fontSize:16,letterSpacing:2}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 911}}, "EASY", React.createElement('span', { style: {color:"#38bdf8"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 911}}, "PLAN"))
         , React.createElement('span', { style: {fontSize:11,color:"#94a3b8",marginLeft:4}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 912}}, "Zeichnung")
+        , React.createElement('button', {onClick:()=>setShowPanel(p=>!p), style:{padding:"7px 12px",borderRadius:7,border:"2px solid #475569",background:"#334155",color:"#fff",fontWeight:800,fontSize:14,cursor:"pointer"}}, showPanel?"▶":"◀")
         , React.createElement('span', { style: {flex:1}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 913}})
         , React.createElement('span', { style: {fontSize:11,color:"#94a3b8"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 914}}, React.createElement('b', { style: {color:col}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 914}}, "KS", ksIdx, ": " , fmtXY(curKS.x,curKS.y), uLabel()), " | abs: "   , fmtXY(curAbs.x,curAbs.y), " | Zoom "   , Math.round(zoom*100), "%")
       )
@@ -966,6 +968,7 @@ function App(){
           , React.createElement('button', { onClick: ()=>finishDraft(false), style: {padding:"8px 14px",borderRadius:7,border:"2px solid #16a34a",background:"#16a34a",color:"#fff",fontWeight:700,fontSize:13,cursor:"pointer"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 947}}, "Offen")
         )
 
+        , React.createElement('button', {onClick:()=>setShowPanel(p=>!p), style:{padding:"7px 12px",borderRadius:7,border:"2px solid #475569",background:"#334155",color:"#fff",fontWeight:800,fontSize:14,cursor:"pointer"}}, showPanel?"▶":"◀")
         , React.createElement('span', { style: {flex:1}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 950}})
         , ksList.map((k,i)=>{const c=KS_COLORS[i%KS_COLORS.length],active=k.id===activeKS;return(
           React.createElement('button', { key: k.id, onClick: ()=>setActiveKS(k.id),
@@ -994,6 +997,7 @@ function App(){
 
             /* KS axes */
             , ksList.map((ks,i)=>{
+              if(i===0)return null;
               const s=w2s(ks.x,ks.y,pan,zoom),c=KS_COLORS[i%KS_COLORS.length],active=ks.id===activeKS;
               return(React.createElement('g', { key: ks.id, onClick: e=>{e.stopPropagation();setActiveKS(ks.id);}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 979}}
                 , React.createElement('line', { x1: s.x-1200,y1: s.y,x2: s.x+1200,y2: s.y,stroke: c,strokeWidth: active?2.5:1,strokeOpacity: active?1:0.35, __self: this, __source: {fileName: _jsxFileName, lineNumber: 980}})
@@ -1039,7 +1043,7 @@ function App(){
                   return(React.createElement('g', { key: hole.id, __self: this, __source: {fileName: _jsxFileName, lineNumber: 1020}}
                     , React.createElement('path', { d: hd, fill: "none", stroke: "#ef4444", strokeWidth: 2, strokeDasharray: "7,3", strokeLinejoin: "round", __self: this, __source: {fileName: _jsxFileName, lineNumber: 1021}})
                     /* Maßkette KS→Kante→Mitte – immer sichtbar */
-                    , holeDimLines(hole, ksobj, pts)
+                    , ksIdx>1 && holeDimLines(hole, ksobj, pts)
                     /* Hole edit handle */
                     , editMode&&(()=>{
                       let cx2,cy2;
@@ -1111,7 +1115,7 @@ function App(){
         )
 
         /* Panel */
-        , React.createElement('div', { style: {width:180,background:C.panel,borderLeft:`1px solid ${C.border}`,padding:10,display:"flex",flexDirection:"column",gap:8,overflowY:"auto",flexShrink:0}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 1095}}
+        , React.createElement('div', { style: {display:showPanel?"flex":"none",width:180,background:C.panel,borderLeft:`1px solid ${C.border}`,padding:10},flexDirection:"column",gap:8,overflowY:"auto",flexShrink:0, __self: this, __source: {fileName: _jsxFileName, lineNumber: 1095}}
           , React.createElement('div', { style: {background:col+"14",border:`2px solid ${col}`,borderRadius:8,padding:10}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 1096}}
             , React.createElement('div', { style: {fontSize:10,color:C.mid,fontWeight:700,marginBottom:4}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 1097}}, "AKTIVES KS" )
             , React.createElement('div', { style: {fontSize:16,fontWeight:900,color:col}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 1098}}, "KS " , ksIdx)
