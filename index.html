@@ -737,13 +737,13 @@ function App(){
         , React.createElement('rect', { x: (sk.x+se.x)/2-26, y: yOff-9, width: 52, height: 16, rx: 4, fill: "#fff", stroke: col, strokeWidth: 1, __self: this, __source: {fileName: _jsxFileName, lineNumber: 717}})
         , React.createElement('text', { x: (sk.x+se.x)/2, y: yOff+3, textAnchor: "middle", fontSize: 10, fontWeight: "800", fill: col, __self: this, __source: {fileName: _jsxFileName, lineNumber: 718}}, fmt(Math.abs(toKS(leftEdgeX,cy,ks).x)))
       ));
-      // KS → Mitte
+      // Kante → Mitte (Radius)
       els.push(React.createElement('g', { key: "hkm", __self: this, __source: {fileName: _jsxFileName, lineNumber: 721}}
-        , React.createElement('line', { x1: sk.x, y1: yOff-14, x2: sc.x, y2: yOff-14, stroke: midCol, strokeWidth: 1.5, strokeDasharray: "5,3", __self: this, __source: {fileName: _jsxFileName, lineNumber: 722}})
-        , React.createElement('line', { x1: sk.x, y1: yOff-19, x2: sk.x, y2: yOff-9, stroke: midCol, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 723}})
+        , React.createElement('line', { x1: se.x, y1: yOff-14, x2: sc.x, y2: yOff-14, stroke: midCol, strokeWidth: 1.5, strokeDasharray: "5,3", __self: this, __source: {fileName: _jsxFileName, lineNumber: 722}})
+        , React.createElement('line', { x1: se.x, y1: yOff-19, x2: se.x, y2: yOff-9, stroke: midCol, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 723}})
         , React.createElement('line', { x1: sc.x, y1: yOff-19, x2: sc.x, y2: yOff-9, stroke: midCol, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 724}})
-        , React.createElement('rect', { x: (sk.x+sc.x)/2-26, y: yOff-23, width: 52, height: 16, rx: 4, fill: "#fff", stroke: midCol, strokeWidth: 1, __self: this, __source: {fileName: _jsxFileName, lineNumber: 725}})
-        , React.createElement('text', { x: (sk.x+sc.x)/2, y: yOff-11, textAnchor: "middle", fontSize: 10, fontWeight: "800", fill: midCol, __self: this, __source: {fileName: _jsxFileName, lineNumber: 726}}, fmt(Math.abs(toKS(cx,cy,ks).x)))
+        , React.createElement('rect', { x: (se.x+sc.x)/2-22, y: yOff-23, width: 44, height: 16, rx: 4, fill: "#fff", stroke: midCol, strokeWidth: 1, __self: this, __source: {fileName: _jsxFileName, lineNumber: 725}})
+        , React.createElement('text', { x: (se.x+sc.x)/2, y: yOff-11, textAnchor: "middle", fontSize: 10, fontWeight: "800", fill: midCol, __self: this, __source: {fileName: _jsxFileName, lineNumber: 726}}, "r", fmt(r))
       ));
 
       // Zeichnungskante → Anfang Ausbruch (nächste Linie der Fläche) – VERTIKAL
@@ -795,13 +795,13 @@ function App(){
         , React.createElement('rect', { x: (sk2.x+sLeft.x)/2-26, y: yOff-9, width: 52, height: 16, rx: 4, fill: "#fff", stroke: col, strokeWidth: 1, __self: this, __source: {fileName: _jsxFileName, lineNumber: 775}})
         , React.createElement('text', { x: (sk2.x+sLeft.x)/2, y: yOff+3, textAnchor: "middle", fontSize: 10, fontWeight: "800", fill: col, __self: this, __source: {fileName: _jsxFileName, lineNumber: 776}}, fmt(Math.abs(toKS(left,cy,ks).x)))
       ));
-      // KS → Mitte
+      // Kante → Mitte
       els.push(React.createElement('g', { key: "hm", __self: this, __source: {fileName: _jsxFileName, lineNumber: 779}}
-        , React.createElement('line', { x1: sk2.x, y1: yOff-14, x2: sMid.x, y2: yOff-14, stroke: midCol, strokeWidth: 1.5, strokeDasharray: "5,3", __self: this, __source: {fileName: _jsxFileName, lineNumber: 780}})
-        , React.createElement('line', { x1: sk2.x, y1: yOff-19, x2: sk2.x, y2: yOff-9, stroke: midCol, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 781}})
+        , React.createElement('line', { x1: sLeft.x, y1: yOff-14, x2: sMid.x, y2: yOff-14, stroke: midCol, strokeWidth: 1.5, strokeDasharray: "5,3", __self: this, __source: {fileName: _jsxFileName, lineNumber: 780}})
+        , React.createElement('line', { x1: sLeft.x, y1: yOff-19, x2: sLeft.x, y2: yOff-9, stroke: midCol, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 781}})
         , React.createElement('line', { x1: sMid.x, y1: yOff-19, x2: sMid.x, y2: yOff-9, stroke: midCol, strokeWidth: 1.2, __self: this, __source: {fileName: _jsxFileName, lineNumber: 782}})
-        , React.createElement('rect', { x: (sk2.x+sMid.x)/2-26, y: yOff-23, width: 52, height: 16, rx: 4, fill: "#fff", stroke: midCol, strokeWidth: 1, __self: this, __source: {fileName: _jsxFileName, lineNumber: 783}})
-        , React.createElement('text', { x: (sk2.x+sMid.x)/2, y: yOff-11, textAnchor: "middle", fontSize: 10, fontWeight: "800", fill: midCol, __self: this, __source: {fileName: _jsxFileName, lineNumber: 784}}, fmt(Math.abs(toKS(cx,cy,ks).x)))
+        , React.createElement('rect', { x: (sLeft.x+sMid.x)/2-26, y: yOff-23, width: 52, height: 16, rx: 4, fill: "#fff", stroke: midCol, strokeWidth: 1, __self: this, __source: {fileName: _jsxFileName, lineNumber: 783}})
+        , React.createElement('text', { x: (sLeft.x+sMid.x)/2, y: yOff-11, textAnchor: "middle", fontSize: 10, fontWeight: "800", fill: midCol, __self: this, __source: {fileName: _jsxFileName, lineNumber: 784}}, fmt(hw))
       ));
 
 
@@ -920,7 +920,6 @@ function App(){
       , React.createElement('div', { style: {background:C.hdr,color:C.hdrFg,padding:"9px 14px",display:"flex",alignItems:"center",gap:10,flexShrink:0}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 910}}
         , React.createElement('b', { style: {fontSize:16,letterSpacing:2}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 911}}, "EASY", React.createElement('span', { style: {color:"#38bdf8"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 911}}, "PLAN"))
         , React.createElement('span', { style: {fontSize:11,color:"#94a3b8",marginLeft:4}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 912}}, "Zeichnung")
-        , React.createElement('button', {onClick:()=>setShowPanel(p=>!p), style:{padding:"7px 12px",borderRadius:7,border:"2px solid #475569",background:"#334155",color:"#fff",fontWeight:800,fontSize:14,cursor:"pointer"}}, showPanel?"▶":"◀")
         , React.createElement('span', { style: {flex:1}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 913}})
         , React.createElement('span', { style: {fontSize:11,color:"#94a3b8"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 914}}, React.createElement('b', { style: {color:col}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 914}}, "KS", ksIdx, ": " , fmtXY(curKS.x,curKS.y), uLabel()), " | abs: "   , fmtXY(curAbs.x,curAbs.y), " | Zoom "   , Math.round(zoom*100), "%")
       )
