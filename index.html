@@ -6,7 +6,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#1e293b">
-<title>EasyPlan</title>
+<title>EspoMass</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body,#root{width:100%;height:100%;overflow:hidden}
@@ -918,8 +918,9 @@ function App(){
 
       /* Header */
       , React.createElement('div', { style: {background:C.hdr,color:C.hdrFg,padding:"9px 14px",display:"flex",alignItems:"center",gap:10,flexShrink:0}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 910}}
-        , React.createElement('b', { style: {fontSize:16,letterSpacing:2}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 911}}, "EASY", React.createElement('span', { style: {color:"#38bdf8"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 911}}, "PLAN"))
+        , React.createElement('b', { style: {fontSize:16,letterSpacing:2}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 911}}, "ESPO ", React.createElement('span', { style: {color:"#38bdf8"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 911}}, "MASS"))
         , React.createElement('span', { style: {fontSize:11,color:"#94a3b8",marginLeft:4}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 912}}, "Zeichnung")
+        , React.createElement('button', {onClick:()=>setShowPanel(p=>!p), style:{padding:"7px 12px",borderRadius:7,border:"2px solid #475569",background:"#334155",color:"#fff",fontWeight:800,fontSize:14,cursor:"pointer"}}, showPanel?"▶":"◀")
         , React.createElement('span', { style: {flex:1}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 913}})
         , React.createElement('span', { style: {fontSize:11,color:"#94a3b8"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 914}}, React.createElement('b', { style: {color:col}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 914}}, "KS", ksIdx, ": " , fmtXY(curKS.x,curKS.y), uLabel()), " | abs: "   , fmtXY(curAbs.x,curAbs.y), " | Zoom "   , Math.round(zoom*100), "%")
       )
